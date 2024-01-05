@@ -32,10 +32,8 @@ protected:
 	UPROPERTY(VisibleAnywhere)
 	UStaticMeshComponent* Mesh;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	float Amplitude1 = 70.f;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	float Frequency2 = 4.f;
+	UWorld* World;
+	float TimeSeconds;
 
 	FVector InitialLocation;
 
@@ -45,5 +43,5 @@ public:
 
 private:
 	UFUNCTION(BlueprintCallable)
-	float SinMovement(float ampl, float freq, float Time);
+	void SinMovement(float ampl, float freq);
 };

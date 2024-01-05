@@ -17,6 +17,7 @@ ACppBaseActor::ACppBaseActor()
 void ACppBaseActor::BeginPlay()
 {
 	Super::BeginPlay();
+	World = GetWorld();
 	InitialLocation = GetActorLocation();
 }
 
@@ -27,6 +28,8 @@ void ACppBaseActor::Tick(float DeltaTime)
 
 }
 
-float ACppBaseActor::SinMovement(float ampl, float freq, float Time) {
-	return ampl * FMath::Sin(freq * Time) + InitialLocation.Z;
+void ACppBaseActor::SinMovement(float Ampl, float Freq) {
+	this->TimeSeconds = World->GetTimeSeconds();
+	InitialLocation.Z = Ampl * FMath::Sin(Freq * this->TimeSeconds) + InitialLocation.Z;
+	this->SetActorLocation(InitialLocation);
 }
